@@ -60,7 +60,6 @@ public class Handler extends DefaultHandler {
     @Override
     public void characters(char[] chars, int start, int length) {
         String text = new String(chars, start, length);
-
         if (chars[start] == '{') { //or text.contains("(") not sure yet
             return;
         }
