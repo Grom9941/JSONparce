@@ -20,4 +20,5 @@ public abstract class DefaultHandler {
         String text = new String(chars, start, length);
         System.out.println("Content = " + text);
     }
+
 }
