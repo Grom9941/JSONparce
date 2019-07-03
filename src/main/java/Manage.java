@@ -35,7 +35,6 @@ class Manage {
 
                 handler.startElement(decomposed[0].substring(1, endSubstringName), decomposed[1].substring(startSecondString, endSubstringAttribute));
                 stack.push(decomposed[0]);
-
             }
 
             if (!decomposed[0].equals("{")) {
