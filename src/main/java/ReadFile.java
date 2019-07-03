@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Stack;
 
 public class ReadFile {
 
@@ -13,7 +14,10 @@ public class ReadFile {
                 currentNumber++;
                 //give to DefaultHendler for manage sax
                 Manage manage = new Manage();
-                manage.manageLineByLine(line, currentNumber, allLines.size());
+                Handler handler = new Handler();
+                Stack<String> stack = new Stack<>();
+
+                manage.manageLineByLine(line, currentNumber, allLines.size(), handler, stack);
                 //System.out.println(line);
             }
         } catch (IOException e) {
