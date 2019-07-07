@@ -31,9 +31,12 @@ class Manage {
 
                 int startSecondString = 0;
                 int endSecondString = 0;
-                if (!decomposed[1].equals("{")) {
+                if (decomposed[1].charAt(0) == '"') {
                     startSecondString = 1;
-                    endSecondString = 2;
+                    endSecondString = 3;
+                } else {
+                    if (decomposed[1].charAt(decomposed[1].length()-1) == ',')
+                        endSecondString = 1;
                 }
                 if (decomposed[1].equals("[")) {
                     startSecondString = 0;
