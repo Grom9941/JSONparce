@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,14 +35,17 @@ public class Handler extends DefaultHandler {
         switch (currentElement) {
             case NEWEMLOYEE_TAG: {
                 currentEmployee = new Employee();
+                break;
             }
 
             case ADDRESS_TAG: {
                 currentEmployee.address = new Employee.Address();
+                break;
             }
 
             case PHONENUMBERS_TAG: {
                 currentEmployee.phone = new Employee.PhoneNumbers();
+                break;
             }
             default:{}
         }
@@ -60,52 +64,68 @@ public class Handler extends DefaultHandler {
     @Override
     public void characters(char[] chars, int start, int length) {
         String text = new String(chars, start, length);
-        if (chars[start] == '{') { //or text.contains("(") not sure yet
+        if (chars[start] == '{' || chars[start] == '[') { //or text.contains("(") not sure yet
             return;
         }
 
         switch (currentElement) {
             case FIRSTNAME_TAG: {
                 currentEmployee.firstName = text;
+                break;
             }
 
             case LASTNAME_TAG: {
                 currentEmployee.lastName = text;
+                break;
             }
 
             case AGE_TAG: {
                 currentEmployee.age = Integer.valueOf(text);
+                break;
             }
 
             case STREET_ADRESS_ATTRIBUTE: {
                 currentEmployee.address.streetAddress = text;
+                break;
             }
 
             case CITY_ADRESS_ATTRIBUTE: {
                 currentEmployee.address.city = text;
+                break;
             }
 
             case STATE_ADRESS_ATTRIBUTE: {
                 currentEmployee.address.state = text;
+                break;
             }
 
             case CODE_ADRESS_ATTRIBUTE: {
                 currentEmployee.address.postalCode = text;
+                break;
             }
 
             case HOME_PHONE_ATTRIBUTE: {
-                currentEmployee.phone.home = Double.valueOf(text);
-                currentEmployee.phone.phoneList.put("home", Double.valueOf(text));
+                currentEmployee.phone.home = Integer.valueOf(text);
+
+                currentEmployee.phone.phoneList = new HashMap<>();
+                currentEmployee.phone.phoneList.put("home", Integer.valueOf(text));
+                break;
             }
 
             case OFFICE_PHONE_ATTRIBUTE: {
-                currentEmployee.phone.office = Double.valueOf(text);
-                currentEmployee.phone.phoneList.put("office", Double.valueOf(text));
+                currentEmployee.phone.office = Integer.valueOf(text);
+
+                currentEmployee.phone.phoneList = new HashMap<>();
+                currentEmployee.phone.phoneList.put("office", Integer.valueOf(text));
+                break;
             }
 
             case MOBILE_PHONE_ATTRIBUTE: {
-                currentEmployee.phone.mobile = Double.valueOf(text);
-                currentEmployee.phone.phoneList.put("mobile", Double.valueOf(text));
+                currentEmployee.phone.mobile = Integer.valueOf(text);
+
+                currentEmployee.phone.phoneList = new HashMap<>();
+                currentEmployee.phone.phoneList.put("mobile", Integer.valueOf(text));
+                break;
             }
             default:{}
         }
@@ -128,10 +148,10 @@ class Employee {
     }
 
     static class PhoneNumbers{
-        Map<String, Double> phoneList;
-        Double home;
-        Double office;
-        Double mobile;
+        Map<String, Integer> phoneList;
+        Integer home;
+        Integer office;
+        Integer mobile;
     }
     @Override
     public String toString() {
