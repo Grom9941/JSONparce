@@ -3,6 +3,8 @@ import java.util.Stack;
 class Manage {
     public void manageLineByLine(String currentLine, int currentNumberLine, int allNumberLine, Handler handler, Stack<String> stack) {
 
+        boolean endElement = false;
+
         if (currentNumberLine == 1 || currentNumberLine == allNumberLine) {
             if (currentNumberLine == 1) {
                 handler.startDocument();
@@ -16,7 +18,14 @@ class Manage {
             int i = 0;
             while (decomposed[i].equals("")) i++;
             decomposed[0] = decomposed[i];
-            decomposed[1] = decomposed[i+1];
+            if (i+1<decomposed.length)
+                decomposed[1] = decomposed[i+1];
+
+            if (decomposed[0].equals("{")) {
+                stack.push(decomposed[0]);
+            }
+            if (decomposed[0].equals("}") || decomposed[0].equals("]"))
+                endElement = true;
 
             if (decomposed[0].charAt(0) == '"') {
 
@@ -26,7 +35,10 @@ class Manage {
                     startSecondString = 1;
                     endSecondString = 2;
                 }
-
+                if (decomposed[1].equals("[")) {
+                    startSecondString = 0;
+                    endSecondString = 0;
+                }
                 int endSubstringName = decomposed[0].length() - 2;
                 int endSubstringAttribute = decomposed[1].length() - endSecondString;
 
@@ -34,10 +46,15 @@ class Manage {
                 //String s2 = decomposed[1].substring(startSecondString, endSubstringAttribute);
 
                 handler.startElement(decomposed[0].substring(1, endSubstringName), decomposed[1].substring(startSecondString, endSubstringAttribute));
+                handler.characters(decomposed[1].toCharArray(), startSecondString, endSubstringAttribute);
                 stack.push(decomposed[0]);
+                if (!(decomposed[1].charAt(0) == '{'))
+                    endElement = true;
+                if (decomposed[1].charAt(0) == '[')
+                    endElement = false;
             }
 
-            if (!decomposed[0].equals("{")) {
+            if (decomposed[0].equals("},") || endElement) {
                 handler.endElement(stack.pop());
                 //handler.endElement(decomposed[0].substring(1, endSubstringName));
             }
