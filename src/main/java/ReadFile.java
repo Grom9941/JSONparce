@@ -21,6 +21,7 @@ public class ReadFile {
                 manage.manageLineByLine(line, currentNumber, allLines.size(), handler, stack);
                 //System.out.println(line);
             }
+            System.out.println(handler.returnEmployee());
         } catch (IOException e) {
             e.printStackTrace();
         }
