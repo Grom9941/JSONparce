@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,12 @@ public class Handler extends DefaultHandler {
     }
 
     @Override
+    public void startDocument() {
+        listEmployee = new ArrayList<>();
+        System.out.println("Start parcing");
+    }
+
+    @Override
     public void startElement(String name, String attributes) {
         currentElement = name;
 
@@ -45,6 +52,7 @@ public class Handler extends DefaultHandler {
 
             case PHONENUMBERS_TAG: {
                 currentEmployee.phone = new Employee.PhoneNumbers();
+                currentEmployee.phone.phoneList = new HashMap<>();
                 break;
             }
             default:{}
@@ -106,24 +114,18 @@ public class Handler extends DefaultHandler {
 
             case HOME_PHONE_ATTRIBUTE: {
                 currentEmployee.phone.home = Integer.valueOf(text);
-
-                currentEmployee.phone.phoneList = new HashMap<>();
                 currentEmployee.phone.phoneList.put("home", Integer.valueOf(text));
                 break;
             }
 
             case OFFICE_PHONE_ATTRIBUTE: {
                 currentEmployee.phone.office = Integer.valueOf(text);
-
-                currentEmployee.phone.phoneList = new HashMap<>();
                 currentEmployee.phone.phoneList.put("office", Integer.valueOf(text));
                 break;
             }
 
             case MOBILE_PHONE_ATTRIBUTE: {
                 currentEmployee.phone.mobile = Integer.valueOf(text);
-
-                currentEmployee.phone.phoneList = new HashMap<>();
                 currentEmployee.phone.phoneList.put("mobile", Integer.valueOf(text));
                 break;
             }
