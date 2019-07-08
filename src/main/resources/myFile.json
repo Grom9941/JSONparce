@@ -4,8 +4,8 @@
     "lastName": "Smith",
     "age": 27,
     "address": {
-      "streetAddress": "21-2nd-Street",
-      "city": "New-York",
+      "streetAddress": "21 2nd Street",
+      "city": "New York",
       "state": "NY",
       "postalCode": "10021-3100"
     },
@@ -18,6 +18,28 @@
       },
       {
         "number:mobile": 7890
+      }
+    ]
+  },
+  "newEmployee": {
+    "firstName": "Lukas",
+    "lastName": "Wir",
+    "age": 10,
+    "address": {
+      "streetAddress": "11 Street",
+      "city": "California",
+      "state": "US",
+      "postalCode": "28-019"
+    },
+    "phoneNumbers": [
+      {
+        "number:home": 11
+      },
+      {
+        "number:office": 22
+      },
+      {
+        "number:mobile": 33
       }
     ]
   }
