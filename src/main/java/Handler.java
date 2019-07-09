@@ -6,7 +6,7 @@ import java.util.Map;
 public class Handler extends DefaultHandler {
     private List<Employee> listEmployee;
 
-    private static  final String NEWEMLOYEE_TAG = "newEmployee";
+    private static final String NEWEMLOYEE_TAG = "newEmployee";
     private static final String FIRSTNAME_TAG = "firstName";
     private static final String LASTNAME_TAG = "lastName";
     private static final String AGE_TAG = "age";
@@ -25,7 +25,7 @@ public class Handler extends DefaultHandler {
     private String currentElement;
     private Employee currentEmployee;
 
-    public List<Employee> returnEmployee() {
+    List<Employee> returnEmployee() {
         return listEmployee;
     }
 
@@ -55,7 +55,8 @@ public class Handler extends DefaultHandler {
                 currentEmployee.phone.phoneList = new HashMap<>();
                 break;
             }
-            default:{}
+            default: {
+            }
         }
 
     }
@@ -129,7 +130,8 @@ public class Handler extends DefaultHandler {
                 currentEmployee.phone.phoneList.put("mobile", Integer.valueOf(text));
                 break;
             }
-            default:{}
+            default: {
+            }
         }
     }
 
@@ -142,19 +144,20 @@ class Employee {
     Address address;
     PhoneNumbers phone;
 
-    static class Address{
+    static class Address {
         String streetAddress;
         String city;
         String state;
         String postalCode;
     }
 
-    static class PhoneNumbers{
+    static class PhoneNumbers {
         Map<String, Integer> phoneList;
         Integer home;
         Integer office;
         Integer mobile;
     }
+
     @Override
     public String toString() {
         return firstName + " " + lastName + "-" + age + "\n" +
