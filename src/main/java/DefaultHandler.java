@@ -4,7 +4,7 @@ public abstract class DefaultHandler {
         System.out.println("Start parcing");
     }
 
-    public void endDocument() {
+    void endDocument() {
         System.out.println("End parcing");
     }
 
