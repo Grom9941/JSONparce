@@ -4,27 +4,30 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Stack;
 
-public class ReadFile {
+class ReadFile {
 
-    public static void main(String[] args) {
+    static List<Employee> parceDoing() {
+
+        List<String> allLines = null;
         try {
-            List<String> allLines = Files.readAllLines(Paths.get("src/main/resources/myFile.json/"));
-            int currentNumber = 0;
-
-            Manage manage = new Manage();
-            Handler handler = new Handler();
-            Stack<String> stack = new Stack<>();
-
-            for (String line : allLines) {
-                currentNumber++;
-                //give to DefaultHendler for manage sax
-                manage.manageLineByLine(line, currentNumber, allLines.size(), handler, stack);
-                //System.out.println(line);
-            }
-            System.out.println(handler.returnEmployee());
+            allLines = Files.readAllLines(Paths.get("src/main/resources/myFile.json/"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+        int currentNumber = 0;
 
+        Manage manage = new Manage();
+        Handler handler = new Handler();
+        Stack<String> stack = new Stack<>();
+
+        assert allLines != null;
+        for (String line : allLines) {
+            currentNumber++;
+            //give to DefaultHendler for manage sax
+            manage.manageLineByLine(line, currentNumber, allLines.size(), handler, stack);
+        }
+
+        return handler.returnEmployee();
+        //System.out.println(handler.returnEmployee());
+    }
 }
