@@ -36,7 +36,7 @@ public class Handler extends DefaultHandler {
     }
 
     @Override
-    public void startElement(String name, String attributes) {
+    public void startElement(String name) {
         currentElement = name;
 
         switch (currentElement) {

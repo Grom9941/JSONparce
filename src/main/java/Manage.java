@@ -1,8 +1,10 @@
-import java.util.Stack;
+import java.util.*;
 
 class Manage {
+     static private List<String> listNames;
+     static private List<String > listAttributes;
 
-    private static String[] splitToArray(String currentLine) {
+     private static String[] splitToArray(String currentLine) {
         String[] decomposed1 = currentLine.split(" ");
         int j = 0;
         while (decomposed1[j].equals("")) j++;
@@ -49,6 +51,10 @@ class Manage {
         }
     }
 
+    static List<String> returnListNames() { return listNames; }
+
+    static List<String> returnListAttributes() { return listAttributes; }
+
     void manageLineByLine(String currentLine, int currentNumberLine, int allNumberLine, Handler handler, Stack<String> stack) {
 
         boolean endElement = false;
@@ -56,15 +62,31 @@ class Manage {
         if (currentNumberLine == 1 || currentNumberLine == allNumberLine) {
 
             startOrEndDocument(currentNumberLine, allNumberLine, handler);
+            if (currentNumberLine == 1) {
+                listNames = new ArrayList<>();
+                listNames.add("{");
+                listAttributes = new ArrayList<>();
+                listAttributes.add("");
+            } else {
+                listNames.add("}");
+                listAttributes.add("");
+            }
 
         } else {
             String[] decomposed = splitToArray(currentLine);
 
-            if (decomposed[0].equals("{"))
+            if (decomposed[0].equals("{")) {
                 stack.push(decomposed[0]);
+                listNames.add(decomposed[0]);
+                listAttributes.add("");
+            } else
 
-            if (decomposed[0].equals("}") || decomposed[0].equals("]"))
+            if (decomposed[0].contains("}") || decomposed[0].contains("]")) {
                 endElement = true;
+                listNames.add(decomposed[0]);
+                listAttributes.add("");
+
+            } else
 
             if (decomposed[0].charAt(0) == '"') {
 
@@ -73,13 +95,23 @@ class Manage {
                     startSecondString = 1;
 
                 int endSubstringName = decomposed[0].length() - 1;
-                int endSubstringAttribute = decomposed[1].length() - forSubstring(decomposed[1]);
+                int lengthAttribute = decomposed[1].length() - forSubstring(decomposed[1]);
 
-                handler.startElement(decomposed[0].substring(1, endSubstringName), decomposed[1].substring(startSecondString, endSubstringAttribute));
-                handler.characters(decomposed[1].toCharArray(), startSecondString, endSubstringAttribute);
+                handler.startElement(decomposed[0].substring(1, endSubstringName));
+                handler.characters(decomposed[1].toCharArray(), startSecondString, lengthAttribute);
+
+                listNames.add(decomposed[0] + ":");
+                if (lengthAttribute != 0) {
+                    listAttributes.add(decomposed[1]);
+                } else {
+                    listAttributes.add("");
+                }
 
                 pushInStack(decomposed[0], stack);
                 endElement = checkEndElement(decomposed[1].charAt(0));
+            } else {
+                listNames.add(decomposed[0]);
+                listAttributes.add("");
             }
 
             if (decomposed[0].equals("},") || endElement) {
