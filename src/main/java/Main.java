@@ -8,8 +8,12 @@ public class Main {
 
         List<String> listNames = Manage.returnListNames();
         List<String> listAttributes = Manage.returnListAttributes();
+
         Encoder encoder = new Encoder();
         encoder.toFile(listNames, listAttributes, new ReadFile().getListSpace());
+
+        EncoderEmployee encoderEmployee = new EncoderEmployee();
+        encoderEmployee.toFile(afterParce);
         //for (String str: arrayAfterParce1){
         //    System.out.println(str);
         //}

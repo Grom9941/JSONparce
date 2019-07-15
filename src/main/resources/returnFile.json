@@ -8,19 +8,19 @@
       "city": "New York",
       "state": "NY",
       "postalCode": "10021-3100"
-      }, 
+    }, 
     "phoneNumbers": [
       { 
         "number:home": 1234
-        }, 
+      }, 
       { 
         "number:office": 4567
-        }, 
+      }, 
       { 
         "number:mobile": 7890
-        } 
-      ] 
-    }, 
+      } 
+    ] 
+  }, 
   "newEmployee": {
     "firstName": "Lukas",
     "lastName": "Wir",
@@ -30,17 +30,17 @@
       "city": "California",
       "state": "US",
       "postalCode": "28-019"
-      }, 
+    }, 
     "phoneNumbers": [
       { 
         "number:home": 11
-        }, 
+      }, 
       { 
         "number:office": 22
-        }, 
+      }, 
       { 
         "number:mobile": 33
-        } 
-      ] 
-    } 
+      } 
+    ] 
   } 
+} 

@@ -15,13 +15,17 @@ class Encoder {
 
             for (String str: listNames){
 
+                if (str.contains("]") || str.contains("}")) {
+                    numberSpace = listSpace.get(numberString-1)-1;
+                }
+
                 char[] charArray = new char[numberSpace];
                 Arrays.fill(charArray, ' ');
                 String spaceString = new String(charArray);
 
                 writer.println(spaceString + spaceString + str + " " + listAttributes.get(numberString));
 
-                numberSpace += listSpace.get(numberString);
+                numberSpace = listSpace.get(numberString);
                 numberString++;
             }
             writer.close();
