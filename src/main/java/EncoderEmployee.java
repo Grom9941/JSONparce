@@ -14,7 +14,6 @@ public class EncoderEmployee {
                 defaultHandlerEncoder.startEncode(writer);
 
                 for (Employee employee: afterParce){
-
                     //problem there
                     for (String str: listNames) {
                         handlerEncoder.encodeElement(writer, employee, str + " ");
