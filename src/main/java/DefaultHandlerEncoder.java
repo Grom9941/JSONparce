@@ -4,15 +4,13 @@ public class DefaultHandlerEncoder {
 
     public void startEncode(PrintWriter writer) {
         System.out.println("Start encoding");
-        writer.println("{");
     }
 
     void endEncode(PrintWriter writer) {
         System.out.println("End parcing");
-        writer.println("}");
     }
 
-    public void encodeElement(String name) {
-        System.out.println("Start element - " + name + "\n");
+    public void encodeElement(PrintWriter writer,Employee employee, String str) {
+        //System.out.println(employee.toString());
     }
 }

@@ -13,7 +13,7 @@ public class Main {
         encoder.toFile(listNames, listAttributes, new ReadFile().getListSpace());
 
         EncoderEmployee encoderEmployee = new EncoderEmployee();
-        encoderEmployee.toFile(afterParce);
+        encoderEmployee.toFile(afterParce, listNames);
         //for (String str: arrayAfterParce1){
         //    System.out.println(str);
         //}
