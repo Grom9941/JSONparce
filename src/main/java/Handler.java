@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class Handler extends DefaultHandler {
     private List<Employee> listEmployee;
-
     private static final String NEWEMLOYEE_TAG = "newEmployee";
     private static final String FIRSTNAME_TAG = "firstName";
     private static final String LASTNAME_TAG = "lastName";
