@@ -1,7 +1,6 @@
 import java.io.PrintWriter;
 
 public class DefaultHandlerEncoder {
-
     void startEncode(PrintWriter writer) {
         System.out.println("Start encoding");
         writer.print("");
