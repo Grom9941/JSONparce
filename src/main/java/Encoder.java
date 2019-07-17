@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.List;
 
 class Encoder {
-
     private String createSpace(int numberSpace){
         char[] charArray = new char[numberSpace];
         Arrays.fill(charArray, ' ');
