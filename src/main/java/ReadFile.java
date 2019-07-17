@@ -9,7 +9,7 @@ class ReadFile {
 
     private static List<Integer> listSpace;
 
-    static List<Employee> parceDoing() {
+    static List<Handler.Employee> parceDoing() {
 
         List<String> allLines = null;
         try {
@@ -50,7 +50,7 @@ class ReadFile {
         //System.out.println(handler.returnEmployee());
     }
 
-    public List<Integer> getListSpace(){
+    List<Integer> getListSpace(){
         return listSpace;
     }
 }
