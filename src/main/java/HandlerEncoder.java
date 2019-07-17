@@ -2,7 +2,6 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class HandlerEncoder extends DefaultHandlerEncoder {
-
     private static final String NEWEMLOYEE_TAG = "newEmployee";
     static final String NEWEMLOYEE_TAG_MARK = "\"newEmployee\":";
     private static final String FIRSTNAME_TAG = "firstName";
