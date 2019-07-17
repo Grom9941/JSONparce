@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.List;
 
 class EncoderEmployee {
-
     void toFile(List<Handler.Employee> afterParce, List<String> listNames) {
 
         File myFileCreate = new File("src/main/resources/returnFileEmployee.json");
