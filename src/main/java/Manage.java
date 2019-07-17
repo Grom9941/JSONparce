@@ -23,10 +23,13 @@ class Manage {
 
     private static boolean checkEndElement(char decomposed) {
         boolean endElement = false;
+
         if (!(decomposed == '{'))
             endElement = true;
+
         if (decomposed == '[')
             endElement = false;
+        
         return endElement;
     }
 
