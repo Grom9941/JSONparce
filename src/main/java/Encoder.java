@@ -3,6 +3,14 @@ import java.util.Arrays;
 import java.util.List;
 
 class Encoder {
+
+    private String createSpace(int numberSpace){
+        char[] charArray = new char[numberSpace];
+        Arrays.fill(charArray, ' ');
+        return new String(charArray);
+
+    }
+
     void toFile(List<String> listNames, List<String> listAttributes, List<Integer> listSpace) {
 
         File myFileCreate = new File("src/main/resources/returnFile.json");
@@ -19,10 +27,7 @@ class Encoder {
                     numberSpace = listSpace.get(numberString-1)-1;
                 }
 
-                char[] charArray = new char[numberSpace];
-                Arrays.fill(charArray, ' ');
-                String spaceString = new String(charArray);
-
+                String spaceString = createSpace(numberSpace);
                 writer.println(spaceString + spaceString + str + " " + listAttributes.get(numberString));
 
                 numberSpace = listSpace.get(numberString);

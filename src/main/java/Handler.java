@@ -135,34 +135,33 @@ public class Handler extends DefaultHandler {
         }
     }
 
-}
+    public static class Employee {
+        String firstName;
+        String lastName;
+        Integer age;
+        Address address;
+        PhoneNumbers phone;
 
-class Employee {
-    String firstName;
-    String lastName;
-    Integer age;
-    Address address;
-    PhoneNumbers phone;
+        static class Address {
+            String streetAddress;
+            String city;
+            String state;
+            String postalCode;
+        }
 
-    static class Address {
-        String streetAddress;
-        String city;
-        String state;
-        String postalCode;
-    }
+        static class PhoneNumbers {
+            Map<String, Integer> phoneList;
+            Integer home;
+            Integer office;
+            Integer mobile;
+        }
 
-    static class PhoneNumbers {
-        Map<String, Integer> phoneList;
-        Integer home;
-        Integer office;
-        Integer mobile;
-    }
-
-    @Override
-    public String toString() {
-        return firstName + " " + lastName + "-" + age + "\n" +
-                "address " + address.streetAddress + " " + address.city + " " + address.state + "\n" +
-                "code " + address.postalCode + "\n" + phone.home + " " + phone.office + " " + phone.mobile;
+        @Override
+        public String toString() {
+            return firstName + " " + lastName + "-" + age + "\n" +
+                    "address " + address.streetAddress + " " + address.city + " " + address.state + "\n" +
+                    "code " + address.postalCode + "\n" + phone.home + " " + phone.office + " " + phone.mobile;
+        }
     }
 }
 

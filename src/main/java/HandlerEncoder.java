@@ -1,6 +1,5 @@
 import java.io.PrintWriter;
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class HandlerEncoder extends DefaultHandlerEncoder {
 
@@ -40,7 +39,7 @@ public class HandlerEncoder extends DefaultHandlerEncoder {
     }
 
     @Override
-    public void encodeElement(PrintWriter writer, Employee employee, String str) {
+    public void encodeElement(PrintWriter writer, Handler.Employee employee, String str) {
 
         String strHelper = "";
         if (str.length() > 3)
