@@ -46,8 +46,10 @@ class EncoderEmployee {
 
             defaultHandlerEncoder.endEncode(writer);
             writer.close();
-        }catch (IOException ex){
-            ex.printStackTrace();
+        }catch (NullPointerException ex){
+            System.out.println("Array less than zero");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

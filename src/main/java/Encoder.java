@@ -20,6 +20,9 @@ class Encoder {
             int numberString = 0;
             int numberSpace = 0;
 
+
+
+
             for (String str: listNames){
 
                 if (str.contains("]") || str.contains("}")) {
@@ -33,8 +36,10 @@ class Encoder {
                 numberString++;
             }
             writer.close();
-        }catch (IOException ex){
-            ex.printStackTrace();
+        }catch (NullPointerException ex){
+            System.out.println("Array less than zero");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

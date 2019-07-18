@@ -29,7 +29,7 @@ class Manage {
 
         if (decomposed == '[')
             endElement = false;
-        
+
         return endElement;
     }
 
@@ -118,7 +118,11 @@ class Manage {
             }
 
             if (decomposed[0].equals("},") || endElement) {
-                handler.endElement(stack.pop());
+                try {
+                    handler.endElement(stack.pop());
+                }catch (EmptyStackException ex) {
+                    System.out.println("Not enough elements in file");
+                }
             }
         }
     }

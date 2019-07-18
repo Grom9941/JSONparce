@@ -31,7 +31,13 @@ class ReadFile {
             currentNumber++;
             //give to DefaultHendler for manage sax
             int size = stack.size();
-            manage.manageLineByLine(line, currentNumber, allLines.size(), handler, stack);
+            try {
+                manage.manageLineByLine(line, currentNumber, allLines.size(), handler, stack);
+            }catch (NullPointerException ex) {
+                System.out.println("Not exist some element");
+            }catch (ArrayIndexOutOfBoundsException ex) {
+                System.out.println("File don't make right");
+            }
 
             if (startArray) {
                 startArray = false;
