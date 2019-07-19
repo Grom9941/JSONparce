@@ -7,7 +7,5 @@ public class Start {
         String file = pathForFile + "myFile.json";
 
         Main.parceAndEncode(file, fileEncoder, fileEncoderEmployee);
-
-
     }
 }
