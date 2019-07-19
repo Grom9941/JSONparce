@@ -9,11 +9,11 @@ class ReadFile {
 
     private static List<Integer> listSpace;
 
-    static List<Handler.Employee> parceDoing() {
+    static List<Handler.Employee> parceDoing(String strFile) {
 
         List<String> allLines = null;
         try {
-            allLines = Files.readAllLines(Paths.get("src/main/resources/myFile.json/"));
+            allLines = Files.readAllLines(Paths.get(strFile));
         } catch (IOException e) {
             e.printStackTrace();
         }

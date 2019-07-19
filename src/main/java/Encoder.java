@@ -10,9 +10,9 @@ class Encoder {
 
     }
 
-    void toFile(List<String> listNames, List<String> listAttributes, List<Integer> listSpace) {
+    void toFile(List<String> listNames, List<String> listAttributes, List<Integer> listSpace, String fileEncoder) {
 
-        File myFileCreate = new File("src/main/resources/returnFile.json");
+        File myFileCreate = new File(fileEncoder);
 
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(myFileCreate));

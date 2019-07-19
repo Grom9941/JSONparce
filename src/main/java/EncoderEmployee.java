@@ -2,9 +2,9 @@ import java.io.*;
 import java.util.List;
 
 class EncoderEmployee {
-    void toFile(List<Handler.Employee> afterParce, List<String> listNames) {
+    void toFile(List<Handler.Employee> afterParce, List<String> listNames, String fileEncoderEmployee) {
 
-        File myFileCreate = new File("src/main/resources/returnFileEmployee.json");
+        File myFileCreate = new File(fileEncoderEmployee);
 
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(myFileCreate));
@@ -16,9 +16,11 @@ class EncoderEmployee {
             boolean firstEmploy = true;
             int sublist = 0;
             boolean newEmploy = false;
+            boolean employeeExist = false;
 
             for (Handler.Employee employee: afterParce){
-
+                employeeExist = true;
+                sublist = 0;
                 nameLoop:
                 {
                     for (String str : listNames) {
@@ -42,6 +44,12 @@ class EncoderEmployee {
                     }
                 }
 
+            }
+
+            if (!employeeExist){
+                for (String str: listNames){
+                    handlerEncoder.encodeElement(writer, new Handler.Employee(), str + " ");
+                }
             }
 
             defaultHandlerEncoder.endEncode(writer);

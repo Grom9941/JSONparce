@@ -19,6 +19,7 @@ public class HandlerEncoder extends DefaultHandlerEncoder {
     private static final String OFFICE_PHONE_ATTRIBUTE = "number:office";
     private static final String MOBILE_PHONE_ATTRIBUTE = "number:mobile";
 
+    private  boolean firstBrackets = true;
     private int space = 2;
     private int increaseCount = 2;
     private boolean endEmployee = false;
@@ -41,8 +42,11 @@ public class HandlerEncoder extends DefaultHandlerEncoder {
     public void encodeElement(PrintWriter writer, Handler.Employee employee, String str) {
 
         String strHelper = "";
-        if (str.length() > 3)
-            strHelper = str.substring(1,str.length() - 3);
+        if (str.length() > 3) {
+            strHelper = str.substring(1, str.length() - 3);
+        }else {
+            strHelper=str;
+        }
 
         switch (strHelper) {
             case NEWEMLOYEE_TAG: {
@@ -106,7 +110,6 @@ public class HandlerEncoder extends DefaultHandlerEncoder {
 
             case CODE_ADRESS_ATTRIBUTE: {
                 writeSpace(writer);
-                decreaseSpace();
 
                 writer.println(str + "\"" + employee.address.postalCode + "\"");
                 break;
@@ -123,7 +126,6 @@ public class HandlerEncoder extends DefaultHandlerEncoder {
             case HOME_PHONE_ATTRIBUTE: {
                 increaseSpace();
                 writeSpace(writer);
-                decreaseSpace();
 
                 writer.println(str + employee.phone.home);
                 break;
@@ -132,7 +134,6 @@ public class HandlerEncoder extends DefaultHandlerEncoder {
             case OFFICE_PHONE_ATTRIBUTE: {
                 increaseSpace();
                 writeSpace(writer);
-                decreaseSpace();
 
                 writer.println(str + employee.phone.office);
                 break;
@@ -149,11 +150,21 @@ public class HandlerEncoder extends DefaultHandlerEncoder {
             }
 
             default: {
+
+                if (strHelper.contains("}") || strHelper.contains("]")) {
+                    if (!endEmployee) {
+                        decreaseSpace();
+                    }
+                }
                 if (endEmployee)
                     decreaseSpace();
 
                 if (space>0)
-                    writeSpace(writer);
+                    if (firstBrackets){
+                        firstBrackets = false;
+                    } else {
+                        writeSpace(writer);
+                    }
                 writer.println(str);
             }
         }
