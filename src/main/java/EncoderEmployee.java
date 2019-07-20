@@ -14,7 +14,7 @@ class EncoderEmployee {
             defaultHandlerEncoder.startEncode(writer);
 
             boolean firstEmploy = true;
-            int sublist = 0;
+            int sublist;
             boolean newEmploy = false;
             boolean employeeExist = false;
 
