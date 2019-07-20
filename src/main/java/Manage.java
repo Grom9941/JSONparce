@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Manage {
+public class Manage {
      static private List<String> listNames;
      static private List<String > listAttributes;
 
@@ -54,9 +54,9 @@ class Manage {
         }
     }
 
-    static List<String> returnListNames() { return listNames; }
+    public static List<String> returnListNames() { return listNames; }
 
-    static List<String> returnListAttributes() { return listAttributes; }
+    public static List<String> returnListAttributes() { return listAttributes; }
 
     void manageLineByLine(String currentLine, int currentNumberLine, int allNumberLine, Handler handler, Stack<String> stack) {
 

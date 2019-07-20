@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-class ReadFile {
+public class ReadFile {
 
     private static List<Integer> listSpace;
 
-    static List<Handler.Employee> parceDoing(String strFile) {
+    public static List<Handler.Employee> parceDoing(String strFile) {
 
         List<String> allLines = null;
         try {

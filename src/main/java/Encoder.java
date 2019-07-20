@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
-class Encoder {
+public class Encoder {
     private String createSpace(int numberSpace){
         char[] charArray = new char[numberSpace];
         Arrays.fill(charArray, ' ');
@@ -10,7 +10,7 @@ class Encoder {
 
     }
 
-    void toFile(List<String> listNames, List<String> listAttributes, List<Integer> listSpace, String fileEncoder) {
+    public void toFile(List<String> listNames, List<String> listAttributes, List<Integer> listSpace, String fileEncoder) {
 
         File myFileCreate = new File(fileEncoder);
 

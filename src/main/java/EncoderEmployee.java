@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.List;
 
-class EncoderEmployee {
+public class EncoderEmployee {
     void toFile(List<Handler.Employee> afterParce, List<String> listNames, String fileEncoderEmployee) {
 
         File myFileCreate = new File(fileEncoderEmployee);
