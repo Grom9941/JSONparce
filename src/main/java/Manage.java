@@ -101,6 +101,9 @@ public class Manage {
                 int lengthAttribute = decomposed[1].length() - forSubstring(decomposed[1]);
 
                 handler.startElement(decomposed[0].substring(1, endSubstringName));
+                if(decomposed[1].charAt(decomposed[1].length()-1) != ',' && decomposed[1].charAt(0) == '"')
+                    lengthAttribute++;
+
                 handler.characters(decomposed[1].toCharArray(), startSecondString, lengthAttribute);
 
                 listNames.add(decomposed[0] + ":");
