@@ -39,6 +39,8 @@ public class TestEqualsFile {
                     countString++;
                 }
 
+                //Assert.assertEquals(countEqualsStr,countString)
+                //assertEqualse(countEqualsStr,countString);
                 if (countEqualsStr == countString){
                     System.out.println("File equals");
                 }

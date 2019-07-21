@@ -20,9 +20,6 @@ public class Encoder {
             int numberString = 0;
             int numberSpace = 0;
 
-
-
-
             for (String str: listNames){
 
                 if (str.contains("]") || str.contains("}")) {

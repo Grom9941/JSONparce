@@ -40,7 +40,6 @@ public class HandlerEncoder extends DefaultHandlerEncoder {
 
     @Override
     public void encodeElement(PrintWriter writer, Handler.Employee employee, String str) {
-
         String strHelper;
         if (str.length() > 3) {
             strHelper = str.substring(1, str.length() - 3);
