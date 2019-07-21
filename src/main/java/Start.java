@@ -1,6 +1,5 @@
 public class Start {
     public static void main(String[] args) {
-
         /*Scanner input = new Scanner(System.in);
         System.out.print("Input name file without \".json\": ");
         String nameFile = input.nextLine();
